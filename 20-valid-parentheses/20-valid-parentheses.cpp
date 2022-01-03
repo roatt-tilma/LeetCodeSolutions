@@ -9,8 +9,8 @@ public:
                 stack.push_back(s[i]);
             }
             else{
-                end_brac = s[i];
                 if (stack.size() == 0) return false;
+                end_brac = s[i];
                 if (end_brac == ')' && stack.back() != '(' 
                     || end_brac == '}' && stack.back() != '{'
                     || end_brac == ']' && stack.back() != '['){
