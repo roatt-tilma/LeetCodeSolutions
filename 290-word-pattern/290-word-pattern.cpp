@@ -37,7 +37,6 @@ public:
             i++;
         }
         i--;
-        cout<<s[i]<<endl;
         if(s[i] != '1') return false;
         return true;
         
