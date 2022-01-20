@@ -15,7 +15,6 @@ public:
         int len = piles.size();
         for (int i = 0; i < len; i++){
             count = findCount(piles,piles[i],i); 
-            cout<<count<<" "<<i<<endl;
             if (count == h) return piles[i];
             if (count < h){
                 if (i == 0){
