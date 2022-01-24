@@ -5,15 +5,10 @@ public:
         int case2 = false;
         int case3 = false;
         
-        for(int i = 0; i < word.size(); i++){
-            if (i == 0){
-                if (word[i] <= 'Z' && word[i] >= 'A'){
-                    case1 = true;
-                }
-                else {
-                    case2 = true;
-                }
-            }
+        if (word[0] <= 'Z' && word[0] >= 'A')case1 = true;
+        else case2 = true;
+        
+        for(int i = 1; i < word.size(); i++){
             if(case1){
                 if(word[i] <= 'z' && word[i] >= 'a'){
                     if (i != 1) return false;
