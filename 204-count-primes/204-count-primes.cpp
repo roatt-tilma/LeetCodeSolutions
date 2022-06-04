@@ -1,8 +1,9 @@
 class Solution {
 public:
     
-    int primes[5000000];
-    int i = 0;
+    int nonPrimes[5000000];
+    //int primes[5000000];
+    //int i = 0;
     
     bool isPrime(int n){
         if(n == 2 || n == 3 || n == 5){
@@ -10,7 +11,7 @@ public:
             return true;  
         } 
         
-        if(primes[n] == 1) return false;
+        if(nonPrimes[n] == 1) return false;
         
         //int x = n/3;
 
@@ -38,7 +39,7 @@ public:
                 long j = i;
                 long k = i;
                 while(j<n){
-                    primes[j] = 1;
+                    nonPrimes[j] = 1;
                     j = i*(k++);
                     //cout<<j<<"\n";
                 }
