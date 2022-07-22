@@ -34,7 +34,7 @@ public:
                 nums[swapIndex] = nums[l];
                 nums[l] = temp;
                 
-                sort(nums.begin() + i, nums.end());
+                reverse(nums.begin() + i, nums.end());
                 break;
             }
         }
