@@ -16,8 +16,6 @@ public:
     
     void nextPermutation(vector<int>& nums) {
         
-        if(nums.size() == 1) return;
-        
         for(int i = nums.size() - 1; i >= 0; i--){
             int l = i - 1;
             
