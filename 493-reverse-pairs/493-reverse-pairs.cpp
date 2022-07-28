@@ -20,7 +20,7 @@ public:
         int indexMerge = l;
         
         for(int i = 0; i < sizeOne; i++){
-            while(indexTwo < sizeTwo && arrOne[i] > (long long)((long long)arrTwo[indexTwo] + (long long) arrTwo[indexTwo])){
+            while(indexTwo < sizeTwo && arrOne[i] > (long long)2*arrTwo[indexTwo]){
                 indexTwo++;
             }
             
