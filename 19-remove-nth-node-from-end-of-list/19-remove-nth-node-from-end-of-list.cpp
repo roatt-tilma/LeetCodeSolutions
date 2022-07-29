@@ -24,14 +24,18 @@ public:
         
         temp = head;
         
-        for(int i = 0; i < sz-n ; i++){
-            prev = temp;
+        for(int i = 1; i < sz-n ; i++){
             temp = temp->next;
         }
         
-        if(prev == NULL) head = head->next;
-        
-        if(prev != NULL)prev->next = temp->next;
+        if(temp == head && sz == n){
+            head = head->next;
+            delete(temp);
+        }else{
+            ListNode* rem = temp->next;
+            temp->next = temp->next->next;
+            delete(rem);  
+        }
         
         return head;
     }
