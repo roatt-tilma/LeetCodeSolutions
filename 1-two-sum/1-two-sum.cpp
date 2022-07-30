@@ -7,36 +7,20 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         vector<int> ans(2);
-        int flag = 0;
+        unordered_map<int, int> hash; 
         
-        vector<int> temp = nums;
-        
-        sort(nums.begin(), nums.end());
-        
-        int i = 0;
-        int j = nums.size() - 1;
-        
-        while(nums[i] + nums[j] != target){
-            if(nums[i] + nums[j] > target) --j;
-            if(nums[i] + nums[j] < target) ++i;
-        }
-        
-        
-        for(int k = 0; k < temp.size(); k++){
-            if(temp[k] == nums[i]){
-                ans[0] = k;
+        for(int i = 0; i < nums.size(); i++){
+            if(hash.find(target - nums[i]) != hash.end() && hash[target - nums[i]] != i){
+                ans[0] = i;
+                ans[1] = hash[target - nums[i]];
                 break;
-            }
-        }
-        
-        for(int k = temp.size() - 1; k >= 0; k--){
-            if(temp[k] == nums[j]){
-                ans[1] = k;
-                break;
+            } else{
+                hash[nums[i]] = i;
             }
         }
         
         return ans;
+        
         
     }
 };
