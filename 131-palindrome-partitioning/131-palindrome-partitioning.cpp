@@ -1,16 +1,25 @@
 class Solution {
 public:
     
+    unordered_map<string, int> dp;
+    
     bool isPalindrome(string s){
+        
+        if(dp[s] == 1) return true;
+        if(dp[s] == -1) return false;
+        
         int l = 0;
         int r = s.size() - 1;
         
         while(l < r){
-            if(s[l] != s[r]) return false;
+            if(s[l] != s[r]){
+              return false;  
+            } 
             l++;
             r--;
         }
         
+        dp[s] = 1;
         return true;
     }
     
