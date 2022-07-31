@@ -12,9 +12,6 @@ public:
             if(sum > target) break;
             sum += array[i];
             subset.push_back(array[i]);
-            cout<<sum<<"\n";
-            for(auto j: subset) cout<<j<<" ";
-            cout<<"\n";
             recurse(target, size, sum, i, array, ans, subset);
             sum -= array[i];
             subset.pop_back();
