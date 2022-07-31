@@ -1,8 +1,6 @@
 class Solution {
 public:
-    
-    unordered_map<string, int> dp;
-    
+
     bool isPalindrome(string s, int start, int end){
         
         while(start <= end){
