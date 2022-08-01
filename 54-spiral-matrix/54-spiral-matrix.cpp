@@ -1,72 +1,48 @@
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        int m = matrix.size();
-        int n = matrix[0].size();
-        int r = 1, d = 0, l = 0, u = 0;
-        int i = 0, j = 0;
-        int count = m*n;
+        
+        int rowBegin = 0;
+        int rowEnd = matrix.size() - 1;
+        int colBegin = 0;
+        int colEnd = matrix[0].size() - 1;
+        
         vector<int> ans;
         
-        while(count){
-            if (r){
-                if (j != n && matrix[i][j] != 101){
-                    ans.push_back(matrix[i][j]);
-                    matrix[i][j] = 101;
-                    j++;
-                    continue;
+        
+        while(rowBegin <= rowEnd && colBegin <= colEnd){
+            
+            for(int i = colBegin; i <= colEnd; i++){
+                ans.push_back(matrix[rowBegin][i]);
+            }
+            
+            rowBegin++;
+            
+            for(int i = rowBegin; i <= rowEnd; i++){
+                ans.push_back(matrix[i][colEnd]);
+            }
+            
+            colEnd--;
+            
+            if(rowBegin <= rowEnd){
+                for(int i = colEnd; i >= colBegin; i--){
+                    ans.push_back(matrix[rowEnd][i]);
+                }     
+            }
+           
+            
+            rowEnd--;
+            
+            if(colBegin <= colEnd){
+                for(int i = rowEnd; i >= rowBegin; i--){
+                    ans.push_back(matrix[i][colBegin]);
                 }
-                
-                j--;
-                i++;
-                r = 0;
-                d = 1;    
             }
             
-            if (d){
-                if (i != m && matrix[i][j] != 101){
-                    ans.push_back(matrix[i][j]);
-                    matrix[i][j] = 101;
-                    i++;
-                    continue;
-                }
-                
-                i--;
-                j--;
-                d = 0;
-                l = 1;
-            }
-            
-            if (l){
-                if (j != -1 && matrix[i][j] != 101){
-                    ans.push_back(matrix[i][j]);
-                    matrix[i][j] = 101;
-                    j--;
-                    continue;
-                }
-                
-                j++;
-                i--;
-                l = 0;
-                u = 1;
-            }
-            
-            if (u){
-                if (i != -1 && matrix[i][j] != 101){
-                    ans.push_back(matrix[i][j]);
-                    matrix[i][j] = 101;
-                    i--;
-                    continue;
-                } 
-                
-                i++;
-                j++;
-                u = 0;
-                r = 1;
-            }
-            
-            count--;
+            colBegin++;
         }
+        
+        
         return ans;
     }
 };
