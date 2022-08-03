@@ -43,34 +43,28 @@ public:
         
         while(k != 0){
             int pos = ceil((float)k/factx);
-            cout<<"\n"<<pos<<" "<<k<<" "<<factx<<" \n";
             for(int i = 1; i <= n; i++){
                 if(!visited[i]){
                     pos--;
                     if(pos == 0){
                         visited[i] = 1;
                         ans += ('0' + i);
-                        cout<<ans<<" ";
                         break;
                     }
                 }
             }
             
             k = k%factx;
+            if(x==0) x = 1;
+            factx = factx/x;
             x--;
-            factx = fact(x);
         }
-        
-        cout<<"\n";
         
         for(int i = n; i > 0; i--){
             if(!visited[i]){
                 ans += ('0' + i);
-                cout<<ans<<" "; 
             } 
         }
-        
-        cout<<"\n";
         
         return ans;
         
