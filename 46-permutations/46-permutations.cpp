@@ -12,8 +12,8 @@ public:
                 visited[i] = 1;
                 permutation.push_back(nums[i]);
                 recurse(nums, visited, ans, permutation);
-                visited[i] = 0;
                 permutation.pop_back();
+                visited[i] = 0;
             }
         }
         
