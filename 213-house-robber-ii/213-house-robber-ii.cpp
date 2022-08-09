@@ -15,9 +15,14 @@ public:
         
         if(nums.size() == 1) return nums[0];
         
-        vector<int> dp0(nums.size(), -1);
-        vector<int> dp1(nums.size(), -1);
+        vector<int> dp(nums.size(), -1);
         
-        return max(recurse(nums, 1, 1, dp1), recurse(nums, 0, 0, dp0));
+        int takeFirst = recurse(nums, 0, 0, dp);
+        
+        fill(dp.begin(), dp.end(), -1);
+        
+        int takeSecond = recurse(nums, 1, 1, dp);
+        
+        return max(takeFirst, takeSecond);
     }
 };
