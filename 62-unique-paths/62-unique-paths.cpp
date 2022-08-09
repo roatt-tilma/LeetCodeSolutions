@@ -5,14 +5,17 @@ public:
         if(m == 0 || n == 0) return 0;
         if(m == 1 && n == 1) return 1;
         
-        if(dp[m][n] == -1) dp[m][n] = countUPath(m-1, n, dp) + countUPath(m, n-1, dp);
+        if(dp[m][n] == -1){
+            dp[m][n] = countUPath(m-1, n, dp) + countUPath(m, n-1, dp);
+            dp[n][m] = dp[m][n];
+        }
     
         return dp[m][n];
     }
     
     
     int uniquePaths(int m, int n) {
-        vector<vector<int>> dp(m+1, vector<int> (n+1, -1));
+        vector<vector<int>> dp(m+n, vector<int> (m+n, -1));
         return countUPath(m, n, dp);
         
 //         int minimum = min(m-1,n-1);
