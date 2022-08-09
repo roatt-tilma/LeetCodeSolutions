@@ -12,7 +12,7 @@ public:
         int count = 0;
         
         if(j+1 < n && obstacleGrid[i][j+1] != 1) count += recurse(i, j+1, m, n, obstacleGrid, dp);
-        if(i+1 < m && obstacleGrid[i+1][j] != 1) count +=  recurse(i+1, j, m, n, obstacleGrid, dp);
+        if(i+1 < m && obstacleGrid[i+1][j] != 1) count += recurse(i+1, j, m, n, obstacleGrid, dp);
           
         dp[i][j] = count;
         
@@ -29,7 +29,7 @@ public:
         
 //         return recurse(0,0,m,n,obstacleGrid,dp);
         
-        vector<vector<long long>> dp(m, vector<long long>(n, 0));
+        vector<vector<int>> dp(m, vector<int>(n, 0));
         
         for(int i = m-1; i >= 0; i--)
             if(obstacleGrid[i][n-1] == 0) dp[i][n-1] = 1;
@@ -41,7 +41,9 @@ public:
         
         for(int i = m-2; i >= 0; i--){
             for(int j = n-2; j >= 0; j--){
-                if(obstacleGrid[i][j] == 0) dp[i][j] = dp[i+1][j] + dp[i][j+1];
+                if(obstacleGrid[i][j] == 0){
+                    dp[i][j] = (long) dp[i+1][j] + dp[i][j+1];
+                }
             }
         }
         
