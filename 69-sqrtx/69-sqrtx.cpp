@@ -3,7 +3,7 @@ public:
     int mySqrt(int x) {
         //compare with x, search from 0 to x
         
-        if(x == 0 || x == 1) return x;
+        if(x == 1) return 1;
         
         int l = 0;
         int r = x/2;
