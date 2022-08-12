@@ -4,9 +4,9 @@ public:
         int l = 0;
         int r = nums.size() - 1;
         
-        while(l < r){
+        while(l <= r){
             
-            if(nums[l] < nums[r]) return nums[l];
+            if(nums[l] <= nums[r]) return nums[l];
             
             
             int mid = (l+r) >> 1;
