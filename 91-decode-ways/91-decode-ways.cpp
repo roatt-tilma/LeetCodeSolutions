@@ -7,9 +7,7 @@ public:
         if(i >= s.size() - 1) return 1;
         
         if(dp[i] != -1) return dp[i];
-        
-        int res = 0;
-        
+
         dp[i] = recurse(i+1, s, dp);
         
         if(s.substr(i, 2) >= "10" && s.substr(i, 2) <= "26") dp[i] += recurse(i+2, s, dp);
@@ -18,10 +16,24 @@ public:
     }
     
     int numDecodings(string s) {
-        vector<int> dp(s.size(), -1);
         
+        int n = s.size();
+        vector<int> dp(n+1, -1);
         
+        dp[n] = 1;
         
-        return recurse(0, s, dp);
+        for(int i = n-1; i >= 0; i--){
+            if(s[i] == '0') dp[i] = 0;
+            else{ 
+                dp[i] = dp[i+1];
+                if(i < n-1 && s.substr(i,2) >= "10" && s.substr(i,2) <= "26"){
+                    dp[i] += dp[i+2];
+                }
+            }
+        }
+        
+        return dp[0];
+        
+        // return recurse(0, s, dp);
     }
 };
