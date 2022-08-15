@@ -9,7 +9,7 @@ public:
             if(nums[l] <= nums[mid]){
                 if(nums[l] < nums[r]) r = mid;
                 else if(nums[l] > nums[r]) l = mid + 1;
-                else if(nums[l] == nums[r] && l != r) l++;
+                else if(nums[l] == nums[r] && l != r) r--;
             } else {
                 r = mid;
             }
