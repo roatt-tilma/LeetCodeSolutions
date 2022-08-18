@@ -10,15 +10,17 @@ public:
         
         int count = 1;
         
+        vector<int> hMap(256, -1);
+        hMap[s[i]] = i;
+        
         while(j < s.size()){
-            for(int k = j-1; k >= i; k--){
-                if(s[k] == s[j]){
-                    count = max(count, j - i);
-                    i = k + 1;
-                    break;
-                }    
+            
+            if(hMap[s[j]] >= i){
+                count = max(count, j - i);
+                i = hMap[s[j]] + 1;
             }
             
+            hMap[s[j]] = j;
             j++;
         }
         
