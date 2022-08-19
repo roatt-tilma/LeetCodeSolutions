@@ -19,15 +19,14 @@ public:
         
         int pre1 = 0;
         int pre2 = 1;
-        int ans = pre1 + pre2;
         
         for(int i = 2; i < n+1; i++){
-            ans = pre1 + pre2;
+            int ans = pre1 + pre2;
             pre1 = pre2;
             pre2 = ans;
         }
         
-        return ans;
+        return pre2;
         
         // return recurse(n, dp);
     }
