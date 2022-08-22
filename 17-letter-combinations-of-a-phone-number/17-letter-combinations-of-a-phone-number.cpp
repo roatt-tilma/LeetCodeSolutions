@@ -11,15 +11,15 @@ public:
         }
         
         for(auto i: mp[digits[index]]){
-            str[index] = i;
+            str.push_back(i);
             recurse(digits, mp, ans, str, index+1);
+            str.pop_back();
         }
         
     }
     
     vector<string> letterCombinations(string digits) {
         vector<string> ans;
-        string str = digits;
         map<char, vector<char>> mp {
             {'2', {'a','b','c'}},
             {'3', {'d','e','f'}},
@@ -31,7 +31,7 @@ public:
             {'9', {'w','x','y','z'}}
         };
         
-        recurse(digits, mp, ans, str, 0);
+        recurse(digits, mp, ans, "", 0);
         
         return ans;
         
